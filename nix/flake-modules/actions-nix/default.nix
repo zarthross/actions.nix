@@ -12,6 +12,7 @@ _localFlake:
   ...
 }:
 {
+  imports = [ _localFlake.inputs.git-hooks.flakeModule ];
   options =
     let
       inherit (lib) types;

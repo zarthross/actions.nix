@@ -13,7 +13,9 @@ let
       inherit (flake-parts-lib) importApply;
       flakeModules =
         let
-          actions-nix = importApply ./flake-modules/actions-nix { inherit withSystem; };
+          actions-nix = importApply ./flake-modules/actions-nix {
+            inherit withSystem inputs;
+          };
         in
         {
           inherit actions-nix;
@@ -28,7 +30,7 @@ let
         "aarch64-darwin"
       ];
       imports = [
-        inputs.pre-commit-hooks.flakeModule
+        inputs.git-hooks.flakeModule
         inputs.treefmt-nix.flakeModule
 
         # Module definition
